@@ -1,0 +1,36 @@
+name: 'Terragrunt Apply'
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  tf_version: 'latest'
+  tg_version: 'latest'
+  tf_working_dir: './accounts'
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+jobs:
+  terragrunt:
+    name: 'Terragrunt Apply'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@master
+      - name: 'init'
+        uses: the-commons-project/terragrunt-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
+      - name: 'apply'
+        uses: the-commons-project/terragrunt-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_subcommand: 'apply'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
