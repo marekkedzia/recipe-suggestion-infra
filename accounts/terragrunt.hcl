@@ -1,5 +1,5 @@
 locals {
-  project_id = "big-data-dev-382612"
+  project_id = "lister-383017"
 }
 
 terraform {
