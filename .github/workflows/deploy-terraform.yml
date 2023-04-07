@@ -3,7 +3,7 @@ name: 'Terragrunt Apply'
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   tf_version: 'latest'
