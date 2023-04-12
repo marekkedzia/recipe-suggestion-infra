@@ -13,3 +13,8 @@ module "frontend" {
   location = var.location
   name     = "${local.project}-frontend-bucket"
 }
+
+module "pdf_storage" {
+  source = "../modules/pdf-storage"
+  name = "${local.project}-pdf-recipe-storage"
+}
